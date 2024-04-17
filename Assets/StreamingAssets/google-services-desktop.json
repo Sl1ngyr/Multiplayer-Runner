@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "570240832701",
+    "project_id": "multiplayer-runner",
+    "storage_bucket": "multiplayer-runner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570240832701:android:09c4a6aa2eba678da653d4",
+        "android_client_info": {
+          "package_name": "com.Slingyr.MultiplayerRunner"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTx3lNpPGLZF58yFME9Xi60MEKfLBFP44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
