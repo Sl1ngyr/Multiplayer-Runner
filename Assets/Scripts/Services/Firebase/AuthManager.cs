@@ -91,7 +91,7 @@ namespace Services.Firebase
         {
             if (_user != null)
             {
-                //_sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
+                _sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
             }
         }
         
@@ -193,7 +193,7 @@ namespace Services.Firebase
                             
             FirebaseException firebaseEx = task.Exception.GetBaseException() as FirebaseException;
             AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
-            
+
             return errorCode;
         }
         
@@ -206,13 +206,12 @@ namespace Services.Firebase
                 case AuthError.MissingPassword:
                     return "Missing Password";
                 case AuthError.WeakPassword:
-                    Debug.Log("Weeak");
                     return "Weak Password";
                 case AuthError.EmailAlreadyInUse:
                     return "Email Already In Use";
             }
 
-            return null;
+            return "Error";
         }
     
 
