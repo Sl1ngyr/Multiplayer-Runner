@@ -8,19 +8,18 @@ namespace Services.Firebase
 {
     public class UpdateDataManager : MonoBehaviour
     {
-        private DatabaseReference _databaseReference;
-        
         private FirebaseUser _user;
+        private DatabaseReference _databaseReference;
         
         public string UserNickname { get; private set; }
         public string UserScore { get; private set; }
         public int UserAvatarID { get; private set; }
         public int UserCarID { get; private set; }
 
-        public void InitDatabase()
+        public void InitDatabase(PlayerDataDisplayMainMenu playerDataDisplayMainMenu)
         {
             InitializeFirebase();
-            StartCoroutine(LoadUserData());
+            StartCoroutine(LoadUserData(playerDataDisplayMainMenu));
         }
         
         public void InitUpdateNickname(string nickname)
@@ -50,7 +49,7 @@ namespace Services.Firebase
             _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         }
 
-        private IEnumerator LoadUserData()
+        private IEnumerator LoadUserData(PlayerDataDisplayMainMenu playerDataDisplayMainMenu)
         {
             var dbTask = _databaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
@@ -77,7 +76,8 @@ namespace Services.Firebase
                 UserCarID = int.Parse(snapshot.Child(Constants.DATABASE_CAR_ID).Value.ToString());
                 UserScore = snapshot.Child(Constants.DATABASE_MAX_SCORE).Value.ToString();
             }
-
+            
+            playerDataDisplayMainMenu.InitPlayerDataUI(UserNickname, UserAvatarID, UserCarID);
         }
         
         private void SetInitialDataToUserData()

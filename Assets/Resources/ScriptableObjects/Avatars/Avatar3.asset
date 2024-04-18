@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e99c548776a4331a57fc8d85cc74122, type: 3}
-  m_Name: Avatar5
+  m_Name: Avatar3
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: 0
-  <AvatarSprite>k__BackingField: {fileID: 0}
+  <ID>k__BackingField: 2
+  <AvatarSprite>k__BackingField: {fileID: 21300000, guid: 261a501498e3fc549b605aa66e5fa18d,
+    type: 3}

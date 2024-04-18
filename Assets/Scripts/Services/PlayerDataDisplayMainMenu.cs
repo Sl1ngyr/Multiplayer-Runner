@@ -1,0 +1,70 @@
+﻿using Services.Garage;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+using Zenject;
+
+namespace Services
+{
+    public class PlayerDataDisplayMainMenu : MonoBehaviour
+    {
+        [SerializeField] private TextMeshProUGUI _nickname;
+        [SerializeField] private Vector3 _playerCarSpawnPosition;
+        [SerializeField] private Image _avatar;
+        
+        [SerializeField] private GameObject _parentCarPreview;
+        
+        private PlayerDataConfig _playerDataConfig;
+
+        private PreviewCar _previewCar;
+        private int _avatarID;
+        private int _carID;
+        
+        [Inject]
+        private void Construct(PlayerDataConfig playerDataConfig)
+        {
+            _playerDataConfig = playerDataConfig;
+        }
+        
+        public void InitPlayerDataUI(string nickname, int avatarID, int carID)
+        {
+            _previewCar = gameObject.AddComponent<PreviewCar>();
+            
+            _nickname.text = nickname;
+            _avatarID = avatarID;
+            _carID = carID;
+            
+            SearchForSelectedAvatar(_avatarID);
+            SearchForSelectedCar(_carID);
+        }
+
+        public void SetNewNicknameUI(string nickname)
+        {
+            _nickname.text = nickname;
+        }
+         
+        public void SearchForSelectedCar(int carID)
+        {
+            foreach (var avatarData in _playerDataConfig.GarageData)
+            {
+                if (avatarData.CarID == carID)
+                {
+                    Destroy(_previewCar.gameObject);
+                    _previewCar = Instantiate(avatarData.GarageCar, _playerCarSpawnPosition, avatarData.GarageCar.transform.rotation);
+                    _previewCar.transform.parent = _parentCarPreview.transform;
+                }
+            }
+        }
+        
+        public void SearchForSelectedAvatar(int avatarID)
+        {
+            foreach (var avatarData in _playerDataConfig.AvatarData)
+            {
+                if (avatarData.ID == avatarID)
+                {
+                    _avatar.sprite = avatarData.AvatarSprite;
+                }
+            }
+        }
+    }
+}

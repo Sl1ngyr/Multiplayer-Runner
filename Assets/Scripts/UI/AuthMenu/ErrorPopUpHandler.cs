@@ -12,7 +12,6 @@ namespace UI.AuthMenu
 
         public void SetUpErrorToPopUp(string error)
         {
-            Debug.Log(error);
             gameObject.SetActive(true);
             
             _errorText.text = error;

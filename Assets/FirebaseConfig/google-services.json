@@ -1,6 +1,6 @@
 {
   "project_info": {
-    "firebase_url" : "null",
+    "firebase_url" : "https://multiplayer-runner-default-rtdb.firebaseio.com/",
     "project_number": "570240832701",
     "project_id": "multiplayer-runner",
     "storage_bucket": "multiplayer-runner.appspot.com"

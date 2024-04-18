@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 6402429198088135414}
   - component: {fileID: 4807268995472977658}
   - component: {fileID: 8745927597323795776}
+  - component: {fileID: 3511121352318380334}
   m_Layer: 0
   m_Name: SM_Veh_Buggy_01
   m_TagString: Untagged
@@ -109,7 +110,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755867400386029517}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -123,7 +124,7 @@ Transform:
   - {fileID: 3418467441945675528}
   - {fileID: 2294710294860174877}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &4807268995472977658
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -174,6 +175,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3511121352318380334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755867400386029517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47cc323f3cf48179bf1d6df5c77abfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedRotation: 50
 --- !u!1 &2399000227578827410
 GameObject:
   m_ObjectHideFlags: 0

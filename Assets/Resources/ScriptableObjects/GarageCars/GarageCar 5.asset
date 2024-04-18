@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e99c548776a4331a57fc8d85cc74122, type: 3}
-  m_Name: Avatar2
+  m_Script: {fileID: 11500000, guid: 9818a3646e42477aadbfe9873685e799, type: 3}
+  m_Name: GarageCar 5
   m_EditorClassIdentifier: 
-  <ID>k__BackingField: 0
-  <AvatarSprite>k__BackingField: {fileID: 0}
+  <CarID>k__BackingField: 4
+  <GarageCar>k__BackingField: {fileID: 6099333667405545347, guid: 10bcd6945dec39846a017758bd0bd260,
+    type: 3}
