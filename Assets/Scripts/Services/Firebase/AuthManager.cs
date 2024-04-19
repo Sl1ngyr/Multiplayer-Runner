@@ -7,6 +7,7 @@ using Services.Scene;
 using TMPro;
 using UI.AuthMenu;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 
@@ -33,8 +34,9 @@ namespace Services.Firebase
         [SerializeField] private TMP_InputField _confirmPasswordRegisterField;
         [SerializeField] private Button _registrationButton;
         
+        [FormerlySerializedAs("_errorPopUpHandler")]
         [Space]
-        [SerializeField] private ErrorPopUpHandler _errorPopUpHandler;
+        [SerializeField] private PopUpMessageHandler popUpMessageHandler;
         [SerializeField] private int _gameSceneBuildIndex = 1;
 
         [Inject] private SceneLoader _sceneLoader;
@@ -131,7 +133,7 @@ namespace Services.Firebase
             
             if (entryData != null)
             {
-                _errorPopUpHandler.SetUpErrorToPopUp(entryData);
+                popUpMessageHandler.SetUpMessageToPopUp(entryData);
                 yield break;
             }
             
@@ -141,7 +143,7 @@ namespace Services.Firebase
 
             if (RegisterTask.Exception != null)
             {
-                _errorPopUpHandler.SetUpErrorToPopUp(GetErrorMessage(ErrorDetection(RegisterTask)));
+                popUpMessageHandler.SetUpMessageToPopUp(GetErrorMessage(ErrorDetection(RegisterTask)));
             }
             else
             {
@@ -159,7 +161,7 @@ namespace Services.Firebase
                     {
                         ErrorDetection(profileTask);
 
-                        _errorPopUpHandler.SetUpErrorToPopUp("Username Set Failed!");
+                        popUpMessageHandler.SetUpMessageToPopUp("Username Set Failed!");
                     }
                     else
                     {
@@ -227,7 +229,7 @@ namespace Services.Firebase
                 FirebaseException firebaseEx = LoginTask.Exception.GetBaseException() as FirebaseException;
                 AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
 
-                _errorPopUpHandler.SetUpErrorToPopUp(GetErrorMessage(errorCode));
+                popUpMessageHandler.SetUpMessageToPopUp(GetErrorMessage(errorCode));
             }
             else
             {

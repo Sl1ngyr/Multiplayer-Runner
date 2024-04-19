@@ -1,7 +1,6 @@
 ﻿using Services.Firebase;
 using UI.MainMenu;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 

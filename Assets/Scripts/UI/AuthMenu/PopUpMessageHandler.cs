@@ -4,13 +4,13 @@ using UnityEngine.UI;
 
 namespace UI.AuthMenu
 {
-    public class ErrorPopUpHandler : MonoBehaviour
+    public class PopUpMessageHandler : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _errorText;
         [SerializeField] private Button _closePopUpButton;
 
 
-        public void SetUpErrorToPopUp(string error)
+        public void SetUpMessageToPopUp(string error)
         {
             gameObject.SetActive(true);
             

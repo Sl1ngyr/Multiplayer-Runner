@@ -7,7 +7,12 @@
         public const string DATABASE_MAX_SCORE = "maxScore";
         public const string DATABASE_CAR_ID = "carID";
         public const string DATABASE_AVATAR_ID = "avatarID";
+
+        public const string PLAYER_SETTINGS_NICKNAME_SUCCESSFULLY_CHANGED = "Congratulations! You have changed your nickname.";
+        public const string PLAYER_SETTINGS_NICKNAME_ERROR_MESSAGE_LESS_CHARACTERS = "The nickname must contain at least three characters!";
+        public const string PLAYER_SETTINGS_NICKNAME_ERROR_MESSAGE_SAME_NICKNAME= "You have entered your nickname!";
         
-        
+        public const string PLAYER_SETTINGS_AVATAR_SUCCESSFULLY_CHANGED = "Congratulations! You have successfully changed your avatar.";
+        public const string PLAYER_SETTINGS_AVATAR_ERROR_MESSAGE_SAME_AVATAR = "You have chosen your avatar!";
     }
 }

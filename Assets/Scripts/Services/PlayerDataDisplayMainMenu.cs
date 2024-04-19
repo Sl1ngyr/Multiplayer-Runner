@@ -38,6 +38,16 @@ namespace Services
             SearchForSelectedCar(_carID);
         }
 
+        public void UpdateDisplayNickname(string nickname)
+        {
+            _nickname.text = nickname;
+        }
+
+        public void UpdateDisplayAvatar(int id)
+        {
+            _avatar.sprite = _playerDataConfig.AvatarData[id].AvatarSprite;
+        }
+        
         public void SetNewNicknameUI(string nickname)
         {
             _nickname.text = nickname;

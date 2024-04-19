@@ -40,6 +40,12 @@ namespace UI.MainMenu
             _sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
         }
 
+        private void OpenPlayerSettings()
+        {
+            ManagementStatusStartCanvases(false);
+            _playerSettings.gameObject.SetActive(true);
+        }
+        
         private void OpenGarage()
         {
             ManagementStatusStartCanvases(false);
@@ -55,12 +61,14 @@ namespace UI.MainMenu
         {
             _startGame.onClick.AddListener(StartGame);
             _openGarage.onClick.AddListener(OpenGarage);
+            _openPlayerSettings.onClick.AddListener(OpenPlayerSettings);
         }
 
         private void OnDisable()
         {
             _startGame.onClick.RemoveListener(StartGame);
             _openGarage.onClick.RemoveListener(OpenGarage);
+            _openPlayerSettings.onClick.RemoveListener(OpenPlayerSettings);
         }
         
         public void ManagementStatusStartCanvases(bool status)
