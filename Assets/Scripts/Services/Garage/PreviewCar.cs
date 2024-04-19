@@ -15,7 +15,7 @@ namespace Services.Garage
         {
             transform.Rotate(
                 transform.rotation.x,
-                _speedRotation *Time.deltaTime,
+                _speedRotation * Time.deltaTime,
                 transform.rotation.z);
         }
     }

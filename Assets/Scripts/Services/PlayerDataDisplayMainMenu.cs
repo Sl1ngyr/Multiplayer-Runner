@@ -45,12 +45,24 @@ namespace Services
          
         public void SearchForSelectedCar(int carID)
         {
-            foreach (var avatarData in _playerDataConfig.GarageData)
+            foreach (var carData in _playerDataConfig.GarageData)
             {
-                if (avatarData.CarID == carID)
+                if (carData.CarID == carID)
                 {
+                    Quaternion rotation;
+                    
+                    if (_previewCar.gameObject != null)
+                    {
+                        rotation = _previewCar.transform.rotation;
+                    }
+                    else
+                    {
+                        rotation = carData.GarageCar.transform.rotation;
+                    }
+                    
                     Destroy(_previewCar.gameObject);
-                    _previewCar = Instantiate(avatarData.GarageCar, _playerCarSpawnPosition, avatarData.GarageCar.transform.rotation);
+                    _previewCar = Instantiate(carData.GarageCar, _playerCarSpawnPosition, rotation);
+                    
                     _previewCar.transform.parent = _parentCarPreview.transform;
                 }
             }
