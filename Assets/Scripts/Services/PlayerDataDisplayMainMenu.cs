@@ -19,11 +19,43 @@ namespace Services
         private PreviewCar _previewCar;
         private int _avatarID;
         private int _carID;
+        private bool _isDataInitialized = false;
         
         [Inject]
         private void Construct(PlayerDataConfig playerDataConfig)
         {
             _playerDataConfig = playerDataConfig;
+        }
+
+        private void CreatePreviewCar(GarageData carData)
+        {
+            Quaternion rotation;
+            
+            if (_isDataInitialized)
+            {
+                rotation = carData.GarageCar.transform.rotation;
+                _isDataInitialized = false;
+            }
+            else
+            {
+                rotation = _previewCar.transform.rotation;
+            }
+                    
+            Destroy(_previewCar.gameObject);
+            _previewCar = Instantiate(carData.GarageCar, _playerCarSpawnPosition, rotation);
+                    
+            _previewCar.transform.parent = _parentCarPreview.transform;
+        }
+        
+        private void SearchForSelectedAvatar(int avatarID)
+        {
+            foreach (var avatarData in _playerDataConfig.AvatarData)
+            {
+                if (avatarData.ID == avatarID)
+                {
+                    _avatar.sprite = avatarData.AvatarSprite;
+                }
+            }
         }
         
         public void InitPlayerDataUI(string nickname, int avatarID, int carID)
@@ -33,6 +65,8 @@ namespace Services
             _nickname.text = nickname;
             _avatarID = avatarID;
             _carID = carID;
+
+            _isDataInitialized = true;
             
             SearchForSelectedAvatar(_avatarID);
             SearchForSelectedCar(_carID);
@@ -47,44 +81,14 @@ namespace Services
         {
             _avatar.sprite = _playerDataConfig.AvatarData[id].AvatarSprite;
         }
-        
-        public void SetNewNicknameUI(string nickname)
-        {
-            _nickname.text = nickname;
-        }
-         
+
         public void SearchForSelectedCar(int carID)
         {
             foreach (var carData in _playerDataConfig.GarageData)
             {
                 if (carData.CarID == carID)
                 {
-                    Quaternion rotation;
-                    
-                    if (_previewCar.gameObject != null)
-                    {
-                        rotation = _previewCar.transform.rotation;
-                    }
-                    else
-                    {
-                        rotation = carData.GarageCar.transform.rotation;
-                    }
-                    
-                    Destroy(_previewCar.gameObject);
-                    _previewCar = Instantiate(carData.GarageCar, _playerCarSpawnPosition, rotation);
-                    
-                    _previewCar.transform.parent = _parentCarPreview.transform;
-                }
-            }
-        }
-        
-        public void SearchForSelectedAvatar(int avatarID)
-        {
-            foreach (var avatarData in _playerDataConfig.AvatarData)
-            {
-                if (avatarData.ID == avatarID)
-                {
-                    _avatar.sprite = avatarData.AvatarSprite;
+                    CreatePreviewCar(carData);
                 }
             }
         }
