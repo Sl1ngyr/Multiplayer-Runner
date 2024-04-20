@@ -9,17 +9,18 @@ namespace Services.Firebase
     public class UpdateDataManager : MonoBehaviour
     {
         private FirebaseUser _user;
-        private DatabaseReference _databaseReference;
-        
+
+        public string UserID => _user.UserId;
+        public DatabaseReference DatabaseReference { get; private set; }
         public string UserNickname { get; private set; }
         public string UserScore { get; private set; }
         public int UserAvatarID { get; private set; }
         public int UserCarID { get; private set; }
 
-        public void InitDatabase(PlayerDataDisplayMainMenu playerDataDisplayMainMenu)
+        public void InitDatabase(MainMenuPlayerDisplayData mainMenuPlayerDisplayData)
         {
             InitializeFirebase();
-            StartCoroutine(LoadUserData(playerDataDisplayMainMenu));
+            StartCoroutine(LoadUserData(mainMenuPlayerDisplayData));
         }
         
         public void InitUpdateNickname(string nickname)
@@ -46,12 +47,12 @@ namespace Services.Firebase
         {
             _user = FirebaseAuth.DefaultInstance.CurrentUser;
 
-            _databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+            DatabaseReference = FirebaseDatabase.DefaultInstance.RootReference;
         }
 
-        private IEnumerator LoadUserData(PlayerDataDisplayMainMenu playerDataDisplayMainMenu)
+        private IEnumerator LoadUserData(MainMenuPlayerDisplayData mainMenuPlayerDisplayData)
         {
-            var dbTask = _databaseReference.Child(Constants.DATABASE_USERS)
+            var dbTask = DatabaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
                 .GetValueAsync();
             
@@ -77,7 +78,7 @@ namespace Services.Firebase
                 UserScore = snapshot.Child(Constants.DATABASE_MAX_SCORE).Value.ToString();
             }
             
-            playerDataDisplayMainMenu.InitPlayerDataUI(UserNickname, UserAvatarID, UserCarID);
+            mainMenuPlayerDisplayData.InitPlayerDataUI(UserNickname, UserAvatarID, UserCarID);
         }
         
         private void SetInitialDataToUserData()
@@ -98,7 +99,7 @@ namespace Services.Firebase
         
         private IEnumerator UpdateNickname(string nickname)
         {
-            var dbTask = _databaseReference.Child(Constants.DATABASE_USERS)
+            var dbTask = DatabaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
                 .Child(Constants.DATABASE_NICKNAME)
                 .SetValueAsync(nickname);
@@ -117,7 +118,7 @@ namespace Services.Firebase
         
         private IEnumerator UpdateAvatarID(int avatarID)
         {
-            var dbTask = _databaseReference.Child(Constants.DATABASE_USERS)
+            var dbTask = DatabaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
                 .Child(Constants.DATABASE_AVATAR_ID)
                 .SetValueAsync(avatarID);
@@ -136,7 +137,7 @@ namespace Services.Firebase
         
         private IEnumerator UpdateCarID(int carID)
         {
-            var dbTask = _databaseReference.Child(Constants.DATABASE_USERS)
+            var dbTask = DatabaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
                 .Child(Constants.DATABASE_CAR_ID)
                 .SetValueAsync(carID);
@@ -155,7 +156,7 @@ namespace Services.Firebase
         
         private IEnumerator UpdateScore(float score)
         {
-            var dbGetScoreTask = _databaseReference.Child(Constants.DATABASE_USERS)
+            var dbGetScoreTask = DatabaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
                 .Child(Constants.DATABASE_MAX_SCORE)
                 .GetValueAsync();
@@ -174,7 +175,7 @@ namespace Services.Firebase
                 }
             }
 
-            var dbTask = _databaseReference.Child(Constants.DATABASE_USERS)
+            var dbTask = DatabaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
                 .Child(Constants.DATABASE_MAX_SCORE)
                 .SetValueAsync(score);

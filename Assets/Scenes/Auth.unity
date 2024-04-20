@@ -4483,7 +4483,7 @@ MonoBehaviour:
   _passwordRegisterField: {fileID: 803541428}
   _confirmPasswordRegisterField: {fileID: 902752566}
   _registrationButton: {fileID: 231298696}
-  _errorPopUpHandler: {fileID: 415115062}
+  popUpMessageHandler: {fileID: 415115062}
   _gameSceneBuildIndex: 1
 --- !u!1 &1094823342
 GameObject:

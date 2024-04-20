@@ -12,7 +12,7 @@ namespace Services.Garage
         [SerializeField] private Button _nextButton;
         [SerializeField] private Button _backButton;
 
-        private PlayerDataDisplayMainMenu _playerDataDisplayMainMenu;
+        private MainMenuPlayerDisplayData _mainMenuPlayerDisplayData;
         private PlayerDataConfig _playerDataConfig;
         private UIMainMenuManager _uiMainMenuManager;
         private UpdateDataManager _updateDataManager;
@@ -20,17 +20,16 @@ namespace Services.Garage
         private int _currentCar;
         private int _maxNumberOfCars;
         
-
         [Inject]
         private void Construct
             (PlayerDataConfig playerDataConfig, 
-            PlayerDataDisplayMainMenu playerDataDisplayMainMenu, 
+            MainMenuPlayerDisplayData mainMenuPlayerDisplayData, 
             UIMainMenuManager uiMainMenuManager,
             UpdateDataManager updateDataManager)
         {
             
             _playerDataConfig = playerDataConfig;
-            _playerDataDisplayMainMenu = playerDataDisplayMainMenu;
+            _mainMenuPlayerDisplayData = mainMenuPlayerDisplayData;
             _uiMainMenuManager = uiMainMenuManager;
             _updateDataManager = updateDataManager;
         }
@@ -51,7 +50,7 @@ namespace Services.Garage
             
             _currentCar++;
             
-            _playerDataDisplayMainMenu.SearchForSelectedCar(_currentCar);
+            _mainMenuPlayerDisplayData.SearchForSelectedCar(_currentCar);
         }
 
         private void ShowPreviousCar()
@@ -60,7 +59,7 @@ namespace Services.Garage
             
             _currentCar--;
             
-            _playerDataDisplayMainMenu.SearchForSelectedCar(_currentCar);
+            _mainMenuPlayerDisplayData.SearchForSelectedCar(_currentCar);
         }
 
         private void SelectCar()

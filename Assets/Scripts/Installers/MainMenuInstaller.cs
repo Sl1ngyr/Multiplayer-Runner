@@ -2,6 +2,7 @@
 using Services.Firebase;
 using UI.MainMenu;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Installers
@@ -10,14 +11,14 @@ namespace Installers
     {
         [SerializeField] private UpdateDataManager _updateDataManager;
         [SerializeField] private PlayerDataConfig _playerDataConfig;
-        [SerializeField] private PlayerDataDisplayMainMenu _playerDataDisplayMainMenu;
+        [FormerlySerializedAs("_playerDataDisplayMainMenu")] [SerializeField] private MainMenuPlayerDisplayData mainMenuPlayerDisplayData;
         [SerializeField] private UIMainMenuManager _uiMainMenuManager;
         
         public override void InstallBindings()
         {
             Container.Bind<UpdateDataManager>().FromInstance(_updateDataManager);
             Container.Bind<PlayerDataConfig>().FromInstance(_playerDataConfig);
-            Container.Bind<PlayerDataDisplayMainMenu>().FromInstance(_playerDataDisplayMainMenu);
+            Container.Bind<MainMenuPlayerDisplayData>().FromInstance(mainMenuPlayerDisplayData);
             Container.Bind<UIMainMenuManager>().FromInstance(_uiMainMenuManager);
         }
     }

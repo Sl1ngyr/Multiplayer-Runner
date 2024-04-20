@@ -30,17 +30,17 @@ namespace UI.MainMenu
         
         private UpdateDataManager _updateDataManager;
         private UIMainMenuManager _uiMainMenuManager;
-        private PlayerDataDisplayMainMenu _playerDataDisplayMainMenu;
+        private MainMenuPlayerDisplayData _mainMenuPlayerDisplayData;
         
         [Inject]
         private void Construct
             (UpdateDataManager updateDataManager, 
             UIMainMenuManager uiMainMenuManager, 
-            PlayerDataDisplayMainMenu playerDataDisplayMainMenu)
+            MainMenuPlayerDisplayData mainMenuPlayerDisplayData)
         {
             _updateDataManager = updateDataManager;
             _uiMainMenuManager = uiMainMenuManager;
-            _playerDataDisplayMainMenu = playerDataDisplayMainMenu;
+            _mainMenuPlayerDisplayData = mainMenuPlayerDisplayData;
         }
 
         private void ConfirmUpdateAvatar()
@@ -55,7 +55,7 @@ namespace UI.MainMenu
             }
             
             _popUpMessageHandler.SetUpMessageToPopUp(Constants.PLAYER_SETTINGS_AVATAR_SUCCESSFULLY_CHANGED);
-            _playerDataDisplayMainMenu.UpdateDisplayAvatar(buttonAvatarID);
+            _mainMenuPlayerDisplayData.UpdateDisplayAvatar(buttonAvatarID);
             _updateDataManager.InitUpdateAvatarID(buttonAvatarID);
         }
         
@@ -75,7 +75,7 @@ namespace UI.MainMenu
             
             _popUpMessageHandler.SetUpMessageToPopUp(Constants.PLAYER_SETTINGS_NICKNAME_SUCCESSFULLY_CHANGED);
             _updateDataManager.InitUpdateNickname(_nicknameField.text);
-            _playerDataDisplayMainMenu.UpdateDisplayNickname(_nicknameField.text);
+            _mainMenuPlayerDisplayData.UpdateDisplayNickname(_nicknameField.text);
         }
         
         private void BackToMainMenu()

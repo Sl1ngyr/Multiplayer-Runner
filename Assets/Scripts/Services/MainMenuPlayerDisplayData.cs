@@ -6,7 +6,7 @@ using Zenject;
 
 namespace Services
 {
-    public class PlayerDataDisplayMainMenu : MonoBehaviour
+    public class MainMenuPlayerDisplayData : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _nickname;
         [SerializeField] private Vector3 _playerCarSpawnPosition;
