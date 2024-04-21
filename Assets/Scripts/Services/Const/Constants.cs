@@ -14,5 +14,9 @@
         
         public const string PLAYER_SETTINGS_AVATAR_SUCCESSFULLY_CHANGED = "Congratulations! You have successfully changed your avatar.";
         public const string PLAYER_SETTINGS_AVATAR_ERROR_MESSAGE_SAME_AVATAR = "You have chosen your avatar!";
+
+        public const int RUNNER_OFFSET_TO_SPAWN_PLAYER = 4;
+
+        public const string PLAYER_PREFS_CAR_ID = "PlayerPrefsCarID";
     }
 }
