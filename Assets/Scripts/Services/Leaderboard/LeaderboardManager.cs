@@ -21,7 +21,7 @@ namespace Services.Leaderboard
         
         private UpdateDataManager _updateDataManager;
         private UIMainMenuManager _uiMainMenuManager;
-        private PlayerDataConfig _playerDataConfig;
+        private MainMenuPlayerDataConfig _mainMenuPlayerDataConfig;
         
         private int _currentPlayerInTop;
         private int _maxPlayersInTop = 5;
@@ -29,11 +29,11 @@ namespace Services.Leaderboard
         [Inject]
         private void Construct (UpdateDataManager updateDataManager, 
             UIMainMenuManager uiMainMenuManager,
-            PlayerDataConfig playerDataConfig)
+            MainMenuPlayerDataConfig mainMenuPlayerDataConfig)
         {
             _updateDataManager = updateDataManager;
             _uiMainMenuManager = uiMainMenuManager;
-            _playerDataConfig = playerDataConfig;
+            _mainMenuPlayerDataConfig = mainMenuPlayerDataConfig;
         }
 
         public void Init()
@@ -54,7 +54,7 @@ namespace Services.Leaderboard
             
             LeaderboardRow leaderboardRow = Instantiate(_leaderboardRowPrefab, _rowParent.transform);
             
-            leaderboardRow.Init(position, nickname, _playerDataConfig.AvatarData[avatarId].AvatarSprite, score, isLocalPlayerInTop);
+            leaderboardRow.Init(position, nickname, _mainMenuPlayerDataConfig.AvatarData[avatarId].AvatarSprite, score, isLocalPlayerInTop);
         }
 
         private void InitLeaderboardData(DataSnapshot snapshot)

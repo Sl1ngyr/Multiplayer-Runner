@@ -48,6 +48,7 @@ namespace Services.Firebase
             _user = FirebaseAuth.DefaultInstance.CurrentUser;
 
             DatabaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+            
         }
 
         private IEnumerator LoadUserData(MainMenuPlayerDisplayData mainMenuPlayerDisplayData)
@@ -152,6 +153,8 @@ namespace Services.Firebase
             {
                 UserCarID = carID;
             }
+            
+            PlayerPrefs.SetInt(Constants.PLAYER_PREFS_CAR_ID, carID);
         }
         
         private IEnumerator UpdateScore(float score)

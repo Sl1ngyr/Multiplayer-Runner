@@ -13,7 +13,7 @@ namespace Services.Garage
         [SerializeField] private Button _backButton;
 
         private MainMenuPlayerDisplayData _mainMenuPlayerDisplayData;
-        private PlayerDataConfig _playerDataConfig;
+        private MainMenuPlayerDataConfig _mainMenuPlayerDataConfig;
         private UIMainMenuManager _uiMainMenuManager;
         private UpdateDataManager _updateDataManager;
         
@@ -22,13 +22,13 @@ namespace Services.Garage
         
         [Inject]
         private void Construct
-            (PlayerDataConfig playerDataConfig, 
+            (MainMenuPlayerDataConfig mainMenuPlayerDataConfig, 
             MainMenuPlayerDisplayData mainMenuPlayerDisplayData, 
             UIMainMenuManager uiMainMenuManager,
             UpdateDataManager updateDataManager)
         {
             
-            _playerDataConfig = playerDataConfig;
+            _mainMenuPlayerDataConfig = mainMenuPlayerDataConfig;
             _mainMenuPlayerDisplayData = mainMenuPlayerDisplayData;
             _uiMainMenuManager = uiMainMenuManager;
             _updateDataManager = updateDataManager;
@@ -36,7 +36,7 @@ namespace Services.Garage
 
         private void Start()
         {
-            _maxNumberOfCars = _playerDataConfig.GarageData.Count - 1;
+            _maxNumberOfCars = _mainMenuPlayerDataConfig.GarageData.Count - 1;
         }
 
         public void Init()

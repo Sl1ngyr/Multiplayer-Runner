@@ -93,7 +93,7 @@ namespace Services.Firebase
         {
             if (_user != null)
             {
-                _sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
+                //_sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
             }
         }
         
@@ -171,6 +171,30 @@ namespace Services.Firebase
             }
         }
 
+        private IEnumerator Login(string email, string password)
+        {
+            var LoginTask = _auth.SignInWithEmailAndPasswordAsync(email, password);
+
+            yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
+
+            if (LoginTask.Exception != null)
+            {
+                Debug.LogWarning(message: $"Failed to register task with {LoginTask.Exception}");
+                FirebaseException firebaseEx = LoginTask.Exception.GetBaseException() as FirebaseException;
+                AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
+
+                popUpMessageHandler.SetUpMessageToPopUp(GetErrorMessage(errorCode));
+            }
+            else
+            {
+                _user = LoginTask.Result.User;
+
+                Debug.LogFormat("User signed in successfully: {0} ({1})", _user.DisplayName, _user.Email);
+                
+                _sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
+            }
+        }
+        
         private string IsCorrectnessEntryData(string email, string password, string username)
         {
             if (username == "")
@@ -215,32 +239,7 @@ namespace Services.Firebase
 
             return "Error";
         }
-    
-
-        private IEnumerator Login(string email, string password)
-        {
-            var LoginTask = _auth.SignInWithEmailAndPasswordAsync(email, password);
-
-            yield return new WaitUntil(predicate: () => LoginTask.IsCompleted);
-
-            if (LoginTask.Exception != null)
-            {
-                Debug.LogWarning(message: $"Failed to register task with {LoginTask.Exception}");
-                FirebaseException firebaseEx = LoginTask.Exception.GetBaseException() as FirebaseException;
-                AuthError errorCode = (AuthError)firebaseEx.ErrorCode;
-
-                popUpMessageHandler.SetUpMessageToPopUp(GetErrorMessage(errorCode));
-            }
-            else
-            {
-                _user = LoginTask.Result.User;
-
-                Debug.LogFormat("User signed in successfully: {0} ({1})", _user.DisplayName, _user.Email);
-                
-                _sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
-            }
-        }
-
+        
         private void OnEnable()
         {
             _registrationButton.onClick.AddListener(RegistrationButton);

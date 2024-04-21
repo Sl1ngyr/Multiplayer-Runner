@@ -14,7 +14,7 @@ namespace Services
         
         [SerializeField] private GameObject _parentCarPreview;
         
-        private PlayerDataConfig _playerDataConfig;
+        private MainMenuPlayerDataConfig _mainMenuPlayerDataConfig;
 
         private PreviewCar _previewCar;
         private int _avatarID;
@@ -22,9 +22,9 @@ namespace Services
         private bool _isDataInitialized = false;
         
         [Inject]
-        private void Construct(PlayerDataConfig playerDataConfig)
+        private void Construct(MainMenuPlayerDataConfig mainMenuPlayerDataConfig)
         {
-            _playerDataConfig = playerDataConfig;
+            _mainMenuPlayerDataConfig = mainMenuPlayerDataConfig;
         }
 
         private void CreatePreviewCar(GarageData carData)
@@ -49,7 +49,7 @@ namespace Services
         
         private void SearchForSelectedAvatar(int avatarID)
         {
-            foreach (var avatarData in _playerDataConfig.AvatarData)
+            foreach (var avatarData in _mainMenuPlayerDataConfig.AvatarData)
             {
                 if (avatarData.ID == avatarID)
                 {
@@ -79,12 +79,12 @@ namespace Services
 
         public void UpdateDisplayAvatar(int id)
         {
-            _avatar.sprite = _playerDataConfig.AvatarData[id].AvatarSprite;
+            _avatar.sprite = _mainMenuPlayerDataConfig.AvatarData[id].AvatarSprite;
         }
 
         public void SearchForSelectedCar(int carID)
         {
-            foreach (var carData in _playerDataConfig.GarageData)
+            foreach (var carData in _mainMenuPlayerDataConfig.GarageData)
             {
                 if (carData.CarID == carID)
                 {
