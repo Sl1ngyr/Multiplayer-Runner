@@ -62,7 +62,7 @@ namespace Player
             {
                 _currentBorderPosition += _rightBorderPosition;
 
-                transform.position = new Vector3(_currentBorderPosition, transform.position.y, 0);
+                transform.position = new Vector3(_currentBorderPosition, 0, transform.position.z);
             }
             else if (deltaX < 0 && _currentBorderPosition != _leftBorderPosition)
             {

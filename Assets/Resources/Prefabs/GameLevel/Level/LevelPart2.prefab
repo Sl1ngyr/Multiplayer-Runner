@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 3901929681
   ObjectInterest: 1
-  Flags: 1
+  Flags: 262145
   NestedObjects:
   - {fileID: 2327330635108964285}
   NetworkedBehaviours:
@@ -221,6 +221,16 @@ PrefabInstance:
       propertyPath: SortKey
       value: 3163283496
       objectReference: {fileID: 0}
+    - target: {fileID: 6339233443214919649, guid: 73adfd9e0a679a0409a236136cfdcf1f,
+        type: 3}
+      propertyPath: NetworkedBehaviours.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6339233443214919649, guid: 73adfd9e0a679a0409a236136cfdcf1f,
+        type: 3}
+      propertyPath: NetworkedBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 4452013396683150362}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -244,3 +254,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8625851080449183836}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4452013396683150362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5367612647783236678, guid: 73adfd9e0a679a0409a236136cfdcf1f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8625851080449183836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da3080bb7134bfbb6c09d569d6b7f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

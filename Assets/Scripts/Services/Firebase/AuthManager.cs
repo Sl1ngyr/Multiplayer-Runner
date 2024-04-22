@@ -44,6 +44,7 @@ namespace Services.Firebase
         private void Awake()
         {
             StartCoroutine(CheckAndFixDependenciesAsync());
+            Application.targetFrameRate = 60;
         }
 
         private IEnumerator CheckAndFixDependenciesAsync()

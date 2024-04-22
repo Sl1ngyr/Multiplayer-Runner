@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 5443960163876025283}
   - component: {fileID: 1081237849472023150}
   - component: {fileID: 4826214865570082926}
+  - component: {fileID: 6848454470487497617}
   m_Layer: 0
   m_Name: ThrowBack
   m_TagString: Untagged
@@ -302,7 +303,8 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 6848454470487497617}
 --- !u!65 &4826214865570082926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -318,12 +320,25 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 3.5844085, y: 3.533039, z: 2.466867}
   m_Center: {x: -0.40920413, y: 1.2665195, z: -0.024939775}
+--- !u!114 &6848454470487497617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8088623282285105764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f1f6c966f5401094f806c409a4e46b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PushBackPositon>k__BackingField: {x: 0, y: 0, z: 5}
 --- !u!1 &8726212360581489489
 GameObject:
   m_ObjectHideFlags: 0

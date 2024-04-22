@@ -11,7 +11,6 @@ namespace Services
         private void Awake()
         {
             _updateDataManager.InitDatabase(mainMenuPlayerDisplayData);
-            
         }
     }
 }

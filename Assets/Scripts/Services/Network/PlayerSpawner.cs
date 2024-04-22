@@ -10,7 +10,7 @@ namespace Services.Network
         [SerializeField] private GamePlayerDataConfig _playerDataConfig;
 
         private int _networkCarId;
-        
+
         public void PlayerJoined(PlayerRef player)
         {
             if (Runner.LocalPlayer == player)

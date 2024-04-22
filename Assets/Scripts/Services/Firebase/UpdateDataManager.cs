@@ -79,6 +79,20 @@ namespace Services.Firebase
                 UserScore = snapshot.Child(Constants.DATABASE_MAX_SCORE).Value.ToString();
             }
             
+            SetDatabaseDataToPlayerPrefs(UserAvatarID, UserCarID, UserNickname);
+
+            float scoreDatabase = float.Parse(UserScore);
+            float scorePlayerPrefs = float.Parse(UserScore);
+
+            if (scoreDatabase < scorePlayerPrefs)
+            {
+                InitUpdateScore(scorePlayerPrefs);
+            }
+            else
+            {
+                PlayerPrefs.SetString(Constants.PLAYER_PREFS_CAR_ID, UserScore);
+            }
+            
             mainMenuPlayerDisplayData.InitPlayerDataUI(UserNickname, UserAvatarID, UserCarID);
         }
         
@@ -189,6 +203,13 @@ namespace Services.Firebase
             {
                 Debug.LogWarning(message: $"Failed to register task with {dbGetScoreTask.Exception}");
             }
+        }
+        
+        private void SetDatabaseDataToPlayerPrefs(int avatarID, int carID, string nickname)
+        {
+            PlayerPrefs.SetInt(Constants.PLAYER_PREFS_CAR_ID, carID);
+            PlayerPrefs.SetInt(Constants.PLAYER_PREFS_AVATAR_ID, avatarID);
+            PlayerPrefs.SetString(Constants.PLAYER_PREFS_NICKNAME, nickname);
         }
     }
 }

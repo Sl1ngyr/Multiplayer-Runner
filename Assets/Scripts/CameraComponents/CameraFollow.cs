@@ -4,9 +4,9 @@ namespace CameraComponents
 {
     public class CameraFollow : MonoBehaviour
     {
-        private Transform _cameraAnchorPoint;
-        
         [SerializeField] private Vector3 _cameraOffest;
+        
+        private Transform _cameraAnchorPoint;
         
         public Transform CameraAnchorPoint
         {

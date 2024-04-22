@@ -18,5 +18,7 @@
         public const int RUNNER_OFFSET_TO_SPAWN_PLAYER = 4;
 
         public const string PLAYER_PREFS_CAR_ID = "PlayerPrefsCarID";
+        public const string PLAYER_PREFS_AVATAR_ID = "PlayerPrefsAvatarID";
+        public const string PLAYER_PREFS_NICKNAME = "PlayerPrefsNickname";
     }
 }
