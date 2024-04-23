@@ -9,29 +9,33 @@ namespace Services.Network
     {
         [SerializeField] private GamePlayerDataConfig _playerDataConfig;
 
-        private int _networkCarId;
+        private int _carID;
 
         public void PlayerJoined(PlayerRef player)
         {
             if (Runner.LocalPlayer == player)
             {
-                _networkCarId = PlayerPrefs.GetInt(Constants.PLAYER_PREFS_CAR_ID);
-                
+                _carID = PlayerPrefs.GetInt(Constants.PLAYER_PREFS_CAR_ID);
+
                 if (Runner.LocalPlayer.PlayerId == 1)
                 {
-                    Runner.Spawn(_playerDataConfig.GetPlayerCarByID(_networkCarId), 
+                    NetworkObject networkPlayer = Runner.Spawn(_playerDataConfig.GetPlayerCarByID(_carID), 
                         new Vector3(-Constants.RUNNER_OFFSET_TO_SPAWN_PLAYER, 0,0), 
                         Quaternion.identity);
+                    
+                    Runner.SetPlayerObject(player, networkPlayer);
                 }
                 else
                 {
-                    Runner.Spawn(_playerDataConfig.GetPlayerCarByID(_networkCarId), 
+                    NetworkObject networkPlayer = Runner.Spawn(_playerDataConfig.GetPlayerCarByID(_carID), 
                         new Vector3(Constants.RUNNER_OFFSET_TO_SPAWN_PLAYER, 0,0), 
                         Quaternion.identity);
+                    
+                    Runner.SetPlayerObject(player, networkPlayer);
                 }
                 
             }
-            
         }
+        
     }
 }
