@@ -1,5 +1,4 @@
-﻿using System;
-using Fusion;
+﻿using Fusion;
 using Player;
 using TMPro;
 using UnityEngine;
@@ -41,14 +40,15 @@ namespace UI.Game
             
             if (_isNitroUsed)
             {
-                if (_nitroSlider.value <= _sliderMinValue)
+                if (_nitroSlider.value > _sliderMinValue)
                 {
-                    _isNitroUsed = false;
-                    _nitroSlider.value = _sliderMinValue;
+                    _nitroSlider.value -= Runner.DeltaTime;
+                    
                 }
                 else
                 {
-                    _nitroSlider.value -= Runner.DeltaTime;
+                    _nitroSlider.value = _sliderMinValue;
+                    _isNitroUsed = false;
                 }
                 
             }
@@ -57,7 +57,9 @@ namespace UI.Game
         public void SetSpeed(float speed)
         {
             float calculationSpeed = speed * _speedCoefficient;
+            
             int speedParce = Mathf.FloorToInt(calculationSpeed);
+            
             _speedText.text = speedParce.ToString();
         }
         

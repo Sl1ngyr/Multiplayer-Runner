@@ -37,11 +37,11 @@ namespace UI.Game
                 float bestScore = float.Parse(score);
                 float currentResult = float.Parse(result);
                 
-                if (currentResult > bestScore)
+                if (currentResult < bestScore)
                 {
                     networkPlayer.GetComponent<DataCollector>().SetNewRecord(currentResult.ToString());
                     
-                    _bestResultText.text += score;
+                    _bestResultText.text += currentResult;
                 }
                 else
                 {

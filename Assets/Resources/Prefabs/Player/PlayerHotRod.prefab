@@ -1144,7 +1144,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -1218,8 +1218,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.70993, y: 2.1063557, z: 5.374872}
-  m_Center: {x: 0.027286053, y: 0.92608833, z: 0.56846046}
+  m_Size: {x: 2.70993, y: 1.9654979, z: 5.374872}
+  m_Center: {x: 0.027286053, y: 0.99651724, z: 0.56846046}
 --- !u!114 &1328368359134594106
 MonoBehaviour:
   m_ObjectHideFlags: 0

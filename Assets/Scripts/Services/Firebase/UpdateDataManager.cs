@@ -49,7 +49,6 @@ namespace Services.Firebase
             _user = FirebaseAuth.DefaultInstance.CurrentUser;
 
             DatabaseReference = FirebaseDatabase.DefaultInstance.RootReference;
-            
         }
 
         private IEnumerator LoadUserData(MainMenuPlayerDisplayData mainMenuPlayerDisplayData)
@@ -82,12 +81,19 @@ namespace Services.Firebase
             
             SetDatabaseDataToPlayerPrefs(UserAvatarID, UserCarID, UserNickname);
 
-            float scoreDatabase = float.Parse(UserScore);
-            float scorePlayerPrefs = float.Parse(PlayerPrefs.GetString(Constants.PLAYER_PREFS_SCORE));
-
-            if (scoreDatabase < scorePlayerPrefs)
+            if (string.IsNullOrEmpty(PlayerPrefs.GetString(Constants.PLAYER_PREFS_SCORE)) == false)
             {
-                InitUpdateScore(scorePlayerPrefs);
+                float scoreDatabase = float.Parse(UserScore);
+                float scorePlayerPrefs = float.Parse(PlayerPrefs.GetString(Constants.PLAYER_PREFS_SCORE));
+
+                if (scoreDatabase > scorePlayerPrefs || scoreDatabase == 0)
+                {
+                    InitUpdateScore(scorePlayerPrefs);
+                }
+                else
+                {
+                    PlayerPrefs.SetString(Constants.PLAYER_PREFS_SCORE, UserScore);
+                }
             }
             else
             {

@@ -34,7 +34,6 @@ namespace Services.Firebase
         [SerializeField] private TMP_InputField _confirmPasswordRegisterField;
         [SerializeField] private Button _registrationButton;
         
-        [FormerlySerializedAs("_errorPopUpHandler")]
         [Space]
         [SerializeField] private PopUpMessageHandler popUpMessageHandler;
         [SerializeField] private int _gameSceneBuildIndex = 1;
@@ -94,7 +93,7 @@ namespace Services.Firebase
         {
             if (_user != null)
             {
-                //_sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
+                _sceneLoader.TransitionToSceneByIndex(_gameSceneBuildIndex);
             }
         }
         
