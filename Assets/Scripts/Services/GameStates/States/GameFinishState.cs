@@ -43,6 +43,7 @@ namespace Services.GameStates.States
             }
             
             _raceTime = GameStatesManager.GameRaceState.PlayerScore;
+            
             _finishUI.Init(_playerPosition, _raceTime);
         }
 
@@ -67,32 +68,51 @@ namespace Services.GameStates.States
         
         public override void Update()
         {
+            IsRemotePlayerFinishedOrLeft();
 
-            if (GameStatesManager.NumberFinishedPlayers != Constants.RUNNER_MAX_PLAYER_IN_SESSION &&
-                !GameStatesManager.IsRemotePlayerLeft)
-            {
-                if (_remotePlayer.IsPlayerFinished)
-                {
-                    GameStatesManager.NumberFinishedPlayers++;
-                }
-            }
-            
-            if (GameStatesManager.NumberFinishedPlayers == Constants.RUNNER_MAX_PLAYER_IN_SESSION && !_isTimerStarted)
-            {
-                _tickTimer = TickTimer.CreateFromSeconds(Runner, Constants.GAME_TIME_FOR_LEAVE_AFTER_FINISH_PREVIEW);
-                _isTimerStarted = true;
-            }
-            
-            if (GameStatesManager.IsRemotePlayerLeft && !_isTimerStarted)
-            {
-                _tickTimer = TickTimer.CreateFromSeconds(Runner, Constants.GAME_TIME_FOR_LEAVE_AFTER_FINISH_PREVIEW);
-                _isTimerStarted = true;
-            }
+            IsAllPlayersFinished();
+
+            IsRemotePlayerLeftBeforeLocalPlayerFinished();
             
             if (_tickTimer.Expired(Runner) && _isTimerStarted)
             {
                 Runner.Shutdown();
                 GameStatesManager.SceneLoader.TransitionToSceneByIndex(GameStatesManager.SceneBuildIndexAfterPlayersFinished);
+            }
+        }
+
+        private void IsRemotePlayerLeftBeforeLocalPlayerFinished()
+        {
+            if (GameStatesManager.IsRemotePlayerLeft && !_isTimerStarted)
+            {
+                _tickTimer = TickTimer.CreateFromSeconds(Runner, Constants.GAME_TIME_FOR_LEAVE_AFTER_FINISH_PREVIEW);
+                _isTimerStarted = true;
+            }
+        }
+        
+        private void IsAllPlayersFinished()
+        {
+            if (GameStatesManager.NumberFinishedPlayers == Constants.RUNNER_MAX_PLAYER_IN_SESSION && !_isTimerStarted)
+            {
+                _tickTimer = TickTimer.CreateFromSeconds(Runner, Constants.GAME_TIME_FOR_LEAVE_AFTER_FINISH_PREVIEW);
+                _isTimerStarted = true;
+            }
+        }
+        
+        private void IsRemotePlayerFinishedOrLeft()
+        {
+            if (GameStatesManager.NumberFinishedPlayers != Constants.RUNNER_MAX_PLAYER_IN_SESSION &&
+                !GameStatesManager.IsRemotePlayerLeft)
+            {
+                if (Runner.ActivePlayers.Count() != Constants.RUNNER_MAX_PLAYER_IN_SESSION)
+                {
+                    GameStatesManager.IsRemotePlayerLeft = true;
+                }
+                
+                if (_remotePlayer.IsPlayerFinished)
+                {
+                    GameStatesManager.NumberFinishedPlayers++;
+                }
             }
         }
     }

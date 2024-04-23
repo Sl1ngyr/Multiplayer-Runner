@@ -44,6 +44,7 @@ namespace Services.GameStates
             GamePreparationForStartState = new GamePreparationForStartState(GameStateMachine, this, Runner, _preparationForStartUI);
             GameRaceState = new GameRaceState(GameStateMachine, this, Runner, _raceCalculationUI, _speedHandlerUI);
             GameFinishState = new GameFinishState(GameStateMachine, this, Runner, _finishUI);
+            
             GameStateMachine.InitState(GameWaitingState);
         }
 

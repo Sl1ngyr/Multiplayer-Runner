@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 4769619666869159275}
   - component: {fileID: 88858617072945019}
   - component: {fileID: 7748314932075538060}
-  - component: {fileID: 8367585023996208628}
   - component: {fileID: 5360911576774209986}
   - component: {fileID: 7673355219958841775}
   - component: {fileID: 7252898043412329435}
-  - component: {fileID: 5251156501644445174}
+  - component: {fileID: 7664642385926932384}
+  - component: {fileID: 1685372241702249823}
   m_Layer: 0
   m_Name: PlayerBuggy
   m_TagString: Untagged
@@ -76,7 +76,8 @@ MonoBehaviour:
   - {fileID: 7748314932075538060}
   - {fileID: 5360911576774209986}
   - {fileID: 7252898043412329435}
-  - {fileID: 5251156501644445174}
+  - {fileID: 7664642385926932384}
+  - {fileID: 92922036084670239}
 --- !u!114 &4769619666869159275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,33 +140,6 @@ MonoBehaviour:
   _timeForAcceleration: 96
   _maxSpeedCoefficient: 1
   _nitroSpeed: 1.5
---- !u!54 &8367585023996208628
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 345040863870604920}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &5360911576774209986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e94b7e35886a45f296fe6c6eb4298607, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5251156501644445174
+--- !u!114 &7664642385926932384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,19 +194,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 345040863870604920}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncScale: 0
   SyncParent: 1
-  _interpolationTarget: {fileID: 0}
-  UsePreciseRotation: 0
-  UseRenderSleepThresholds: 0
-  RenderThresholds:
-    UseEnergy: 1
-    Position: 0.01
-    Rotation: 0.01
-    Scale: 0.01
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
+--- !u!54 &1685372241702249823
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345040863870604920}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &599165473347368848
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +571,7 @@ GameObject:
   - component: {fileID: 3640599336801124026}
   - component: {fileID: 5810455657531878569}
   - component: {fileID: 2941484275240289171}
+  - component: {fileID: 92922036084670239}
   m_Layer: 0
   m_Name: SM_Veh_Buggy_01
   m_TagString: Untagged
@@ -656,6 +652,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &92922036084670239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5411241042678815835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &5531651010315807545
 GameObject:
   m_ObjectHideFlags: 0

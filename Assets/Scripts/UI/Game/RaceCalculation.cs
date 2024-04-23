@@ -26,7 +26,7 @@ namespace UI.Game
             CurrentTime = 0;
             
             SetPlayersData();
-            
+            _localPlayer.GetComponent<PlayerMovement>().RaceStarted();
             _isRaceStarted = true;
         }
 
@@ -52,7 +52,6 @@ namespace UI.Game
                     if (Runner.LocalPlayer == player)
                     {
                         _localPlayer = networkPlayer.transform;
-                        _localPlayer.GetComponent<PlayerMovement>().RaceStarted();
                     }
                     else
                     {

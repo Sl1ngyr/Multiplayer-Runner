@@ -16,7 +16,6 @@ namespace Player
 
         private bool _isRaceStarted = false;
         
-        private NetworkRigidbody3D _rigidbody;
         private PlayerCollisionDetector _playerCollisionDetector;
         private SwipeDetector _swipeDetector;
         
@@ -29,7 +28,6 @@ namespace Player
         
         public override void Spawned()
         {
-            _rigidbody = GetComponent<NetworkRigidbody3D>();
             _playerCollisionDetector = GetComponent<PlayerCollisionDetector>();
             _swipeDetector = GetComponent<SwipeDetector>();
             
@@ -95,8 +93,8 @@ namespace Player
             {
                 _maxSpeedCoefficient = 1;
             }
-            
-            _rigidbody.RBPosition = transform.position + Vector3.forward * CurrentSpeed;
+             
+            transform.localPosition += Vector3.forward * CurrentSpeed;
         }
         
         private void PlayerFinished()
@@ -112,7 +110,7 @@ namespace Player
 
         private void PushBack(Vector3 pushBackPosition)
         {
-            _rigidbody.transform.position -= pushBackPosition;
+            transform.localPosition -= pushBackPosition;
         }
         
         private void SlowMovement(float delay, float coefficient)

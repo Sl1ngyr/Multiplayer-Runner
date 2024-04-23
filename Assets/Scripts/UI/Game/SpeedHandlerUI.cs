@@ -34,26 +34,6 @@ namespace UI.Game
             BindNitroButtonToPlayer();
         }
         
-        public override void FixedUpdateNetwork()
-        {
-            if(HasStateAuthority == false) return;
-            
-            if (_isNitroUsed)
-            {
-                if (_nitroSlider.value > _sliderMinValue)
-                {
-                    _nitroSlider.value -= Runner.DeltaTime;
-                    
-                }
-                else
-                {
-                    _nitroSlider.value = _sliderMinValue;
-                    _isNitroUsed = false;
-                }
-                
-            }
-        }
-
         public void SetSpeed(float speed)
         {
             float calculationSpeed = speed * _speedCoefficient;
@@ -71,6 +51,28 @@ namespace UI.Game
             }
         }
 
+        private void Update()
+        {
+            UseNitro();
+        }
+
+        private void UseNitro()
+        {
+            if (_isNitroUsed)
+            {
+                if (_nitroSlider.value > _sliderMinValue)
+                {
+                    _nitroSlider.value -= Time.deltaTime;
+                }
+                else
+                {
+                    _nitroSlider.value = _sliderMinValue;
+                    _isNitroUsed = false;
+                }
+                
+            }
+        }
+        
         private void BindNitroButtonToPlayer()
         {
             if (Runner.TryGetPlayerObject(Runner.LocalPlayer, out var networkPlayer))

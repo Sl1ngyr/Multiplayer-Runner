@@ -51,7 +51,6 @@ namespace Services.GameStates.States
                     }
                 }
             }
-            
         }
 
         public override void ExitState()
@@ -74,7 +73,6 @@ namespace Services.GameStates.States
                 GameStatesManager.GameStateMachine.ChangeState(GameStatesManager.GameFinishState);
             }
 
-            
             if (_localPlayer.IsPlayerFinished)
             {
                 if (_remotePlayer.IsPlayerFinished)

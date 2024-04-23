@@ -1163,7 +1163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SyncScale: 0
   SyncParent: 1
-  _interpolationTarget: {fileID: 0}
+  _interpolationTarget: {fileID: 5273757205885923601}
   UsePreciseRotation: 0
   UseRenderSleepThresholds: 0
   RenderThresholds:
