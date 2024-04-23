@@ -1,6 +1,8 @@
 ﻿using Fusion;
 using UnityEngine;
 using System;
+using GameComponents.Items;
+using GameComponents.Level;
 using GameComponents.Obstacle;
 
 namespace Player
@@ -8,16 +10,26 @@ namespace Player
     public class PlayerCollisionDetector : NetworkBehaviour
     {
         public Action<float,float> OnSlowObstacleDetected;
-        
         public Action<Vector3> OnPushBackObstacleDetected;
-        
         public Action OnResetSpeedObstacleDetected;
+        public Action OnNitroChargeDetected;
+        public Action OnPlayerFinished;
 
         private void OnTriggerEnter(Collider coll)
         {
             if (coll.TryGetComponent(out BaseObstacle obstacle))
             {
                 DetectObstacle(obstacle.ObstacleType, obstacle);
+            }
+
+            if (coll.TryGetComponent(out NitroItem nitroItem))
+            {
+                OnNitroChargeDetected?.Invoke();   
+            }
+
+            if (coll.TryGetComponent(out FinishLine finishLine))
+            {
+                OnPlayerFinished?.Invoke();
             }
         }
 

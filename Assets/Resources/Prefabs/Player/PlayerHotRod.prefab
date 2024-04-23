@@ -1010,9 +1010,14 @@ GameObject:
   - component: {fileID: 6758387692319244846}
   - component: {fileID: 1376795584001453625}
   - component: {fileID: 690870567917820657}
-  - component: {fileID: 5454826611983833806}
   - component: {fileID: 3184178573157739247}
   - component: {fileID: 7126567151055692584}
+  - component: {fileID: 708361801613070829}
+  - component: {fileID: 3589714007733354183}
+  - component: {fileID: 1677887106283956958}
+  - component: {fileID: 2741129033229309627}
+  - component: {fileID: 5743979001139085026}
+  - component: {fileID: 1328368359134594106}
   m_Layer: 0
   m_Name: PlayerHotRod
   m_TagString: Untagged
@@ -1066,25 +1071,11 @@ MonoBehaviour:
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1376795584001453625}
-  - {fileID: 5454826611983833806}
   - {fileID: 7126567151055692584}
-  - {fileID: 6013327931997456494}
---- !u!114 &5454826611983833806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7507931747865713491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  - {fileID: 3589714007733354183}
+  - {fileID: 1677887106283956958}
+  - {fileID: 2741129033229309627}
+  - {fileID: 1328368359134594106}
 --- !u!114 &3184178573157739247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1131,6 +1122,116 @@ MonoBehaviour:
   _swipeResistance: 100
   _rightBorderPosition: 4
   _leftBorderPosition: -4
+--- !u!54 &708361801613070829
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507931747865713491}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3589714007733354183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507931747865713491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 1
+  _interpolationTarget: {fileID: 0}
+  UsePreciseRotation: 0
+  UseRenderSleepThresholds: 0
+  RenderThresholds:
+    UseEnergy: 0
+    Position: 0.01
+    Rotation: 0.01
+    Scale: 0.01
+--- !u!114 &1677887106283956958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507931747865713491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f50bd2e0824e129019e887914452ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSpeed: 3
+  _timeForAcceleration: 96
+  _maxSpeedCoefficient: 1
+  _nitroSpeed: 1.5
+--- !u!114 &2741129033229309627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507931747865713491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94b7e35886a45f296fe6c6eb4298607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &5743979001139085026
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507931747865713491}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.70993, y: 2.1063557, z: 5.374872}
+  m_Center: {x: 0.027286053, y: 0.92608833, z: 0.56846046}
+--- !u!114 &1328368359134594106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507931747865713491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551385452ff349788cd18e8fad3c5c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7905606787146661309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1309,7 +1410,6 @@ GameObject:
   - component: {fileID: 5273757205885923601}
   - component: {fileID: 8659827890413768688}
   - component: {fileID: 6983918700395109435}
-  - component: {fileID: 6013327931997456494}
   m_Layer: 0
   m_Name: SM_Veh_HotRod_01
   m_TagString: Untagged
@@ -1392,19 +1492,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6013327931997456494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9040884853401832652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0

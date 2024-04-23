@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1353040717353094978}
   - component: {fileID: 2265953081444174854}
   - component: {fileID: 6086581230502770226}
+  - component: {fileID: 4098424783957692250}
   m_Layer: 0
   m_Name: Nitro
   m_TagString: Untagged
@@ -101,7 +102,8 @@ MonoBehaviour:
   ObjectInterest: 1
   Flags: 262145
   NestedObjects: []
-  NetworkedBehaviours: []
+  NetworkedBehaviours:
+  - {fileID: 4098424783957692250}
 --- !u!65 &6086581230502770226
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -123,3 +125,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7498287, y: 1.6303606, z: 0.61527413}
   m_Center: {x: 0.030715367, y: 0.11874485, z: 0.022800088}
+--- !u!114 &4098424783957692250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091939732850936698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 351f5bcae4404ae7bdc77e4632478ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

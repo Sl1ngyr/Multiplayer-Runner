@@ -1,5 +1,4 @@
-﻿using Player;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace GameComponents.Obstacle
 {
@@ -7,13 +6,5 @@ namespace GameComponents.Obstacle
     {
         [field: SerializeField] public float SlowCoefficient { get; private set; }
         [field: SerializeField] public float TimeDelay { get; private set; }
-        
-        private void OnTriggerEnter(Collider coll)
-        {
-            if (coll.TryGetComponent(out PlayerMovement player))
-            {
-                Runner.Despawn(Object);
-            }
-        }
     }
 }

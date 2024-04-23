@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Services.Avatar;
 using UnityEngine;
 
 namespace GameComponents.Configs
@@ -6,7 +7,8 @@ namespace GameComponents.Configs
     public class GamePlayerDataConfig : MonoBehaviour
     {
         [field: SerializeField] public List<PlayerCarData> PlayersCars { get; private set; }
-
+        [field: SerializeField] public List<AvatarData> AvatarData { get; private set; }
+        
         public GameObject GetPlayerCarByID(int ID)
         {
             GameObject playerCar = null;
@@ -19,6 +21,20 @@ namespace GameComponents.Configs
             if(playerCar == null) Debug.LogError("There is no car with this ID");
             
             return playerCar;
+        }
+        
+        public Sprite GetPlayerAvatarByID(int ID)
+        {
+            Sprite playerAvatar = null;
+            
+            foreach (var avatar in AvatarData)
+            {
+                if (avatar.ID == ID) playerAvatar = avatar.AvatarSprite;
+            }
+
+            if(playerAvatar == null) Debug.LogError("No sprite with this identifier exists");
+            
+            return playerAvatar;
         }
     }
 }

@@ -2,6 +2,7 @@
 using Firebase.Auth;
 using Firebase.Database;
 using Services.Const;
+using UI.MainMenu;
 using UnityEngine;
 
 namespace Services.Firebase
@@ -82,7 +83,7 @@ namespace Services.Firebase
             SetDatabaseDataToPlayerPrefs(UserAvatarID, UserCarID, UserNickname);
 
             float scoreDatabase = float.Parse(UserScore);
-            float scorePlayerPrefs = float.Parse(UserScore);
+            float scorePlayerPrefs = float.Parse(PlayerPrefs.GetString(Constants.PLAYER_PREFS_SCORE));
 
             if (scoreDatabase < scorePlayerPrefs)
             {
@@ -90,7 +91,7 @@ namespace Services.Firebase
             }
             else
             {
-                PlayerPrefs.SetString(Constants.PLAYER_PREFS_CAR_ID, UserScore);
+                PlayerPrefs.SetString(Constants.PLAYER_PREFS_SCORE, UserScore);
             }
             
             mainMenuPlayerDisplayData.InitPlayerDataUI(UserNickname, UserAvatarID, UserCarID);

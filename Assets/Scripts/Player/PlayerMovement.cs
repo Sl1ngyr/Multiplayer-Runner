@@ -1,4 +1,5 @@
 ﻿using Fusion;
+using Fusion.Addons.Physics;
 using UnityEngine;
 
 namespace Player
@@ -10,38 +11,75 @@ namespace Player
         [SerializeField] private float _maxSpeedCoefficient = 1;
         [SerializeField] private float _nitroSpeed = 1.5f;
         
-        private float _currentSpeed = 0;
         private float _acceleration = 0;
-        private float _nitroAcceleration = 0;
+        private float _nitroAcceleration;
+
+        private bool _isRaceStarted = false;
         
-        private Rigidbody _rigidbody;
+        private NetworkRigidbody3D _rigidbody;
         private PlayerCollisionDetector _playerCollisionDetector;
+        private SwipeDetector _swipeDetector;
         
         [Networked] private TickTimer _slowSpeedTime { get; set; }
+
+        public float CurrentSpeed { get; private set; } = 0;
+        public bool IsNitroPressed { get; private set; } = false;
+        public bool IsNitroChargeReady { get; private set; } = false;
+        public bool IsPlayerFinished { get; private set; } = false;
         
         public override void Spawned()
         {
-            _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody = GetComponent<NetworkRigidbody3D>();
             _playerCollisionDetector = GetComponent<PlayerCollisionDetector>();
+            _swipeDetector = GetComponent<SwipeDetector>();
             
             _acceleration = _maxSpeed / _timeForAcceleration;
 
             _playerCollisionDetector.OnSlowObstacleDetected += SlowMovement;
             _playerCollisionDetector.OnPushBackObstacleDetected += PushBack;
             _playerCollisionDetector.OnResetSpeedObstacleDetected += ResetSpeed;
+            _playerCollisionDetector.OnNitroChargeDetected += GetNitroChange;
+            _playerCollisionDetector.OnPlayerFinished += PlayerFinished;
+        }
+
+        public void RaceStarted()
+        {
+            _isRaceStarted = true;
+        }
+
+        public void PressNitro()
+        {
+            if (IsNitroChargeReady)
+            {
+                IsNitroPressed = true;
+            }
         }
         
         public override void FixedUpdateNetwork()
         {
             if (HasStateAuthority == false) return;
-            
-            if (_currentSpeed < (_maxSpeed * _maxSpeedCoefficient + _nitroSpeed * _nitroAcceleration))
+
+            Move();
+        }
+
+        private void Move()
+        {
+            if(!_isRaceStarted || IsPlayerFinished) return;
+
+            if (IsNitroChargeReady && IsNitroPressed)
             {
-                _currentSpeed += (_acceleration + _nitroAcceleration) * Runner.DeltaTime;
+                _nitroAcceleration = _nitroSpeed;
+                IsNitroChargeReady = false;
+                IsNitroPressed = false;
+            }
+            
+            if (CurrentSpeed < (_maxSpeed * _maxSpeedCoefficient + _nitroSpeed * _nitroAcceleration))
+            {
+                CurrentSpeed += (_acceleration + _nitroAcceleration) * Runner.DeltaTime;
             }
             else
             {
-                _currentSpeed = _maxSpeed * _maxSpeedCoefficient + _nitroSpeed * _nitroAcceleration;
+                CurrentSpeed = _maxSpeed * _maxSpeedCoefficient + _nitroSpeed * _nitroAcceleration;
             }
 
             if (_nitroAcceleration > 0)
@@ -58,13 +96,18 @@ namespace Player
                 _maxSpeedCoefficient = 1;
             }
             
-            
-            _rigidbody.MovePosition(transform.position + Vector3.forward * _currentSpeed);
+            _rigidbody.RBPosition = transform.position + Vector3.forward * CurrentSpeed;
         }
-
+        
+        private void PlayerFinished()
+        {
+            IsPlayerFinished = true;
+            _swipeDetector.enabled = false;
+        }
+        
         private void ResetSpeed()
         {
-            _currentSpeed = 0;
+            CurrentSpeed = 0;
         }
 
         private void PushBack(Vector3 pushBackPosition)
@@ -78,13 +121,19 @@ namespace Player
             
             _slowSpeedTime = TickTimer.CreateFromSeconds(Runner, delay);
         }
+
+        private void GetNitroChange()
+        {
+            IsNitroChargeReady = true;
+        }
         
         private void OnDisable()
         {
             _playerCollisionDetector.OnSlowObstacleDetected -= SlowMovement;
             _playerCollisionDetector.OnPushBackObstacleDetected -= PushBack;
             _playerCollisionDetector.OnResetSpeedObstacleDetected -= ResetSpeed;
+            _playerCollisionDetector.OnNitroChargeDetected -= GetNitroChange;
         }
-        
+
     }
 }

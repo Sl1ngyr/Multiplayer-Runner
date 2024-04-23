@@ -627,8 +627,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 445912689}
   m_HandleRect: {fileID: 445912688}
   m_Direction: 2
-  m_Value: 0.99984425
-  m_Size: 0.82414734
+  m_Value: 0.99999857
+  m_Size: 0.9509819
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3406,8 +3406,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 89600674}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.17582527}
-  m_AnchorMax: {x: 1, y: 0.9999726}
+  m_AnchorMin: {x: 0, y: 0.049018014}
+  m_AnchorMax: {x: 1, y: 0.99999994}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3483,8 +3483,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 181.30013, y: -94.73486}
+  m_SizeDelta: {x: 648.61, y: 239.47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &462563036
 CanvasRenderer:
@@ -3577,7 +3577,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -9.117592, y: 0, z: -431.03497, w: -143.28438}
+  m_margin: {x: 1.2367021, y: 0, z: 1.0862637, w: 1.6154021}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5762,7 +5762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.02398487}
+  m_AnchoredPosition: {x: 0, y: 0.00004216824}
   m_SizeDelta: {x: 0, y: 875.8577}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &718357882
@@ -10250,7 +10250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _updateDataManager: {fileID: 1043014353}
-  _playerDataConfig: {fileID: 1509857308}
+  _mainMenuPlayerDataConfig: {fileID: 1509857308}
   mainMenuPlayerDisplayData: {fileID: 2118246437}
   _uiMainMenuManager: {fileID: 1800103062}
 --- !u!4 &1340631112
