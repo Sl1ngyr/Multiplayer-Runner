@@ -1,5 +1,4 @@
 ﻿using Fusion;
-using Fusion.Addons.Physics;
 using UnityEngine;
 
 namespace Player
@@ -110,7 +109,7 @@ namespace Player
 
         private void PushBack(Vector3 pushBackPosition)
         {
-            transform.localPosition -= pushBackPosition;
+            transform.position -= pushBackPosition;
         }
         
         private void SlowMovement(float delay, float coefficient)

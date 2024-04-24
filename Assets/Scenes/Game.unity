@@ -1388,7 +1388,6 @@ MonoBehaviour:
   _IsRemotePlayerLeft:
     _value: 0
   _NumberFinishedPlayers: 0
-  SceneLoader: {fileID: 0}
 --- !u!4 &481735397
 Transform:
   m_ObjectHideFlags: 0
@@ -3270,8 +3269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f239f319d04120b9bf8b9641029198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timerText: {fileID: 991779708}
   <PositionText>k__BackingField: {fileID: 1320180037}
+  <TimerText>k__BackingField: {fileID: 991779708}
 --- !u!1 &1259869883
 GameObject:
   m_ObjectHideFlags: 0
@@ -4153,7 +4152,7 @@ MonoBehaviour:
   - {fileID: 7469442710403148885, guid: 67c9f4e3a929be148a26af2944729851, type: 3}
   - {fileID: 1317849458090813357, guid: 4c36e6feda3828d47ac1a2961224e0ce, type: 3}
   - {fileID: 1348658615871408111, guid: f688aeb57f41e494384371d78f96848c, type: 3}
-  _levelLength: 45
+  _levelLength: 40
   _offsetPart: {x: 0, y: 0, z: 20}
   _parentLevelParts: {fileID: 1134461474}
 --- !u!4 &1476616004

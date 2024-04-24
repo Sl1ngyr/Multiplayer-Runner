@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using Firebase.Database;
 using Services.Const;
@@ -24,8 +23,7 @@ namespace Services.Leaderboard
         private MainMenuPlayerDataConfig _mainMenuPlayerDataConfig;
         
         private int _currentPlayerInTop;
-        private int _maxPlayersInTop = 5;
-        
+
         [Inject]
         private void Construct (UpdateDataManager updateDataManager, 
             UIMainMenuManager uiMainMenuManager,
@@ -67,11 +65,11 @@ namespace Services.Leaderboard
             {
                 if (childSnapshot.Key == _updateDataManager.UserID)
                 {
-                    isLocalPlayerInTop = _currentPlayerInTop <= _maxPlayersInTop;
+                    isLocalPlayerInTop = _currentPlayerInTop <= Constants.LEADERBOARD_MAX_PLAYERS_IN_TOP;
                     isFoundLocalPlayer = true;
                 }
 
-                if (_currentPlayerInTop > _maxPlayersInTop && isInitRowLocalPlayer)
+                if (_currentPlayerInTop > Constants.LEADERBOARD_MAX_PLAYERS_IN_TOP && isInitRowLocalPlayer)
                 {
                     return;
                 }
@@ -84,7 +82,7 @@ namespace Services.Leaderboard
                     isFoundLocalPlayer = false;
                     isLocalPlayerInTop = false;
                 }
-                else if(_currentPlayerInTop <= _maxPlayersInTop)
+                else if(_currentPlayerInTop <= Constants.LEADERBOARD_MAX_PLAYERS_IN_TOP)
                 {
                     CreateLeaderboardRow(childSnapshot, _currentPlayerInTop, isLocalPlayerInTop);
                 }

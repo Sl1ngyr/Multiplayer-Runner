@@ -1,5 +1,4 @@
-﻿using System;
-using Fusion;
+﻿using Fusion;
 using Services.Const;
 using UI.Game;
 using UnityEngine;
@@ -8,10 +7,10 @@ namespace Services.GameStates.States
 {
     public class GamePreparationForStartState : GameState
     {
-        [Networked] private TickTimer _preparationTimer { get; set; }
-        
         private PreparationForStart _preparationForStartUI;
+        
         private float _countdownTimer;
+        
         public GamePreparationForStartState(GameStateMachine gameStateMachine, 
             GameStatesManager gameStatesManager, 
             NetworkRunner runner, 
@@ -27,8 +26,6 @@ namespace Services.GameStates.States
             _preparationForStartUI.Init();
             
             _countdownTimer = Constants.GAME_TIME_FOR_PREPARATION;
-            
-            _preparationTimer = TickTimer.CreateFromSeconds(Runner, Constants.GAME_TIME_FOR_PREPARATION);
         }
 
         public override void ExitState()
@@ -38,8 +35,6 @@ namespace Services.GameStates.States
 
         public override void Update()
         {
-            _countdownTimer -= Time.deltaTime;
-            
             if (_countdownTimer <= 0)
             {
                 _preparationForStartUI.SetTimerText(0);
@@ -51,6 +46,7 @@ namespace Services.GameStates.States
                 _preparationForStartUI.SetTimerText(Mathf.FloorToInt(_countdownTimer));
             }
             
+            _countdownTimer -= Time.deltaTime;
         }
     }
 }

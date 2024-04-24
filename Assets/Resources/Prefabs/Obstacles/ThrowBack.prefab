@@ -326,8 +326,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.5844085, y: 3.533039, z: 2.466867}
-  m_Center: {x: -0.40920413, y: 1.2665195, z: -0.024939775}
+  m_Size: {x: 4.255227, y: 3.244258, z: 2.8537805}
+  m_Center: {x: -0.07379484, y: 1.5815535, z: -0.07400596}
 --- !u!114 &6848454470487497617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ObstacleType>k__BackingField: 0
-  <PushBackPositon>k__BackingField: {x: 0, y: 0, z: 5}
+  <PushBackPositon>k__BackingField: {x: 0, y: 0, z: 7}
 --- !u!114 &3432095305915620097
 MonoBehaviour:
   m_ObjectHideFlags: 0

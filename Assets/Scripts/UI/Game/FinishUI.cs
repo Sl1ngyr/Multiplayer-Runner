@@ -34,19 +34,9 @@ namespace UI.Game
                 string score = networkPlayer.GetComponent<DataCollector>().BestScore;
                 int avatarID = networkPlayer.GetComponent<DataCollector>().AvatarID;
                 
-                float bestScore = float.Parse(score);
-                float currentResult = float.Parse(result);
+                _bestResultText.text += score;
                 
-                if (currentResult < bestScore)
-                {
-                    networkPlayer.GetComponent<DataCollector>().SetNewRecord(currentResult.ToString());
-                    
-                    _bestResultText.text += currentResult;
-                }
-                else
-                {
-                    _bestResultText.text += bestScore.ToString();
-                }
+                networkPlayer.GetComponent<DataCollector>().SetNewRecord(result);
                 
                 SetUserDataToUI(nickname, avatarID);
             }

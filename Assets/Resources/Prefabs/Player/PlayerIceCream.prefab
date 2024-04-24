@@ -98,10 +98,10 @@ GameObject:
   - component: {fileID: 4105107343590029774}
   - component: {fileID: 2340573993260020061}
   - component: {fileID: 5147694604096978230}
-  - component: {fileID: 3504050544838933964}
   - component: {fileID: 2444798467823493568}
   - component: {fileID: 1637050822513261317}
   - component: {fileID: 527613670408765939}
+  - component: {fileID: 756435431254193691}
   m_Layer: 0
   m_Name: PlayerIceCream
   m_TagString: Untagged
@@ -157,9 +157,10 @@ MonoBehaviour:
   - {fileID: 8242156227180348773}
   - {fileID: 4105107343590029774}
   - {fileID: 2340573993260020061}
-  - {fileID: 3504050544838933964}
   - {fileID: 2444798467823493568}
   - {fileID: 1637050822513261317}
+  - {fileID: 756435431254193691}
+  - {fileID: 129591721687814321}
 --- !u!114 &168735392337675054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,28 +246,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3504050544838933964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1448765536436098351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 1
-  _interpolationTarget: {fileID: 5162111303560874066}
-  UsePreciseRotation: 0
-  UseRenderSleepThresholds: 0
-  RenderThresholds:
-    UseEnergy: 1
-    Position: 0.01
-    Rotation: 0.01
-    Scale: 0.01
 --- !u!114 &2444798467823493568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +295,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.1635206, y: 2.883389, z: 4.943215}
   m_Center: {x: -0.009235024, y: 1.5044734, z: 0.22872186}
+--- !u!114 &756435431254193691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448765536436098351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &3050894816046614908
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +322,7 @@ GameObject:
   - component: {fileID: 5162111303560874066}
   - component: {fileID: 8550112673600384109}
   - component: {fileID: 4646311237744220145}
+  - component: {fileID: 129591721687814321}
   m_Layer: 0
   m_Name: SM_Veh_IceCream_01
   m_TagString: Untagged
@@ -408,6 +404,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &129591721687814321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050894816046614908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &3416366909878495582
 GameObject:
   m_ObjectHideFlags: 0

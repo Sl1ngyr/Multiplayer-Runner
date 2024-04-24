@@ -509,6 +509,7 @@ GameObject:
   - component: {fileID: 4227058783881271286}
   - component: {fileID: 3650509887735563145}
   - component: {fileID: 2694282219278761882}
+  - component: {fileID: 5009019377502749726}
   m_Layer: 0
   m_Name: SM_Veh_Ute_01
   m_TagString: Untagged
@@ -594,6 +595,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5009019377502749726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043913837110707655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &3344164050256536227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,8 +1126,8 @@ GameObject:
   - component: {fileID: 4248742947198731478}
   - component: {fileID: 8185321799073145835}
   - component: {fileID: 5648708072486508665}
-  - component: {fileID: 5658452700769647203}
   - component: {fileID: 3931491218672526635}
+  - component: {fileID: 8744543410522850453}
   m_Layer: 0
   m_Name: PlayerUte
   m_TagString: Untagged
@@ -1168,7 +1185,8 @@ MonoBehaviour:
   - {fileID: 9212822733229116821}
   - {fileID: 4248742947198731478}
   - {fileID: 8185321799073145835}
-  - {fileID: 5658452700769647203}
+  - {fileID: 8744543410522850453}
+  - {fileID: 5009019377502749726}
 --- !u!114 &1214494958062512616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1282,28 +1300,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5658452700769647203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6811658648182877275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 1
-  _interpolationTarget: {fileID: 4227058783881271286}
-  UsePreciseRotation: 0
-  UseRenderSleepThresholds: 0
-  RenderThresholds:
-    UseEnergy: 1
-    Position: 0.01
-    Rotation: 0.01
-    Scale: 0.01
 --- !u!65 &3931491218672526635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1325,6 +1321,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.237318, y: 2.7418535, z: 5.3808937}
   m_Center: {x: 0.008305073, y: 1.4980956, z: 0.15003014}
+--- !u!114 &8744543410522850453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6811658648182877275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &7963107418193135981
 GameObject:
   m_ObjectHideFlags: 0

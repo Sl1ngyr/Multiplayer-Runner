@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using Firebase.Auth;
 using Firebase.Database;
 using Services.Const;
@@ -39,7 +40,7 @@ namespace Services.Firebase
             StartCoroutine(UpdateCarID(carID));
         }
         
-        public void InitUpdateScore(float score)
+        public void InitUpdateScore(string score)
         {
             StartCoroutine(UpdateScore(score));
         }
@@ -78,29 +79,58 @@ namespace Services.Firebase
                 UserCarID = int.Parse(snapshot.Child(Constants.DATABASE_CAR_ID).Value.ToString());
                 UserScore = snapshot.Child(Constants.DATABASE_MAX_SCORE).Value.ToString();
             }
+
+            IsPlayerRaceScoreBetterThenCurrent();
             
             SetDatabaseDataToPlayerPrefs(UserAvatarID, UserCarID, UserNickname);
+            
+            mainMenuPlayerDisplayData.InitPlayerDataUI(UserNickname, UserAvatarID, UserCarID);
+        }
 
-            if (string.IsNullOrEmpty(PlayerPrefs.GetString(Constants.PLAYER_PREFS_SCORE)) == false)
+        private void IsPlayerRaceScoreBetterThenCurrent()
+        {
+            string playerPrefsScore = PlayerPrefs.GetString(Constants.PLAYER_PREFS_SCORE);
+
+            if (UserScore != "0" && string.IsNullOrEmpty(playerPrefsScore) == false && playerPrefsScore != "0")
             {
-                float scoreDatabase = float.Parse(UserScore);
-                float scorePlayerPrefs = float.Parse(PlayerPrefs.GetString(Constants.PLAYER_PREFS_SCORE));
-
-                if (scoreDatabase > scorePlayerPrefs || scoreDatabase == 0)
-                {
-                    InitUpdateScore(scorePlayerPrefs);
-                }
-                else
-                {
-                    PlayerPrefs.SetString(Constants.PLAYER_PREFS_SCORE, UserScore);
-                }
+                InitUpdateScore(GetCalculationScore(playerPrefsScore));
+            }
+            else if (string.IsNullOrEmpty(playerPrefsScore) == false && playerPrefsScore != "0") 
+            {
+                InitUpdateScore(playerPrefsScore);
             }
             else
             {
                 PlayerPrefs.SetString(Constants.PLAYER_PREFS_SCORE, UserScore);
             }
+        }
+        
+        private string GetCalculationScore(string score)
+        {
+            if (string.IsNullOrEmpty(score)) return UserScore;
             
-            mainMenuPlayerDisplayData.InitPlayerDataUI(UserNickname, UserAvatarID, UserCarID);
+            string[] databaseTime = UserScore.Split(':');
+            string[] playerPrefsTime = score.Split(':');
+
+            int databaseMinutes = Int32.Parse(databaseTime[Constants.DATABASE_SCORE_MINUTES_INDEX]);
+            int databaseSeconds = Int32.Parse(databaseTime[Constants.DATABASE_SCORE_SECONDS_INDEX]);
+            int databaseMilliseconds = Int32.Parse(databaseTime[Constants.DATABASE_SCORE_MILLISECONDS_INDEX]);
+
+            int scoreMinutes = Int32.Parse(playerPrefsTime[Constants.DATABASE_SCORE_MINUTES_INDEX]);
+            int scoreSeconds = Int32.Parse(playerPrefsTime[Constants.DATABASE_SCORE_SECONDS_INDEX]);
+            int scoreMilliseconds = Int32.Parse(playerPrefsTime[Constants.DATABASE_SCORE_MILLISECONDS_INDEX]);
+                
+            float databaseTimeResult = databaseMinutes + 
+                                       (databaseSeconds/Constants.DATABASE_SCORE_DIVISOR_FOR_SECONDS) + 
+                                       (databaseMilliseconds/Constants.DATABASE_SCORE_DIVISOR_FOR_MILLISECONDS);
+                
+            float scoreTimeResult = scoreMinutes + 
+                                    (scoreSeconds/Constants.DATABASE_SCORE_DIVISOR_FOR_SECONDS) + 
+                                    (scoreMilliseconds/Constants.DATABASE_SCORE_DIVISOR_FOR_MILLISECONDS);
+
+            if (databaseTimeResult > scoreTimeResult) return score;
+            
+            return UserScore;
         }
         
         private void SetInitialDataToUserData()
@@ -108,7 +138,7 @@ namespace Services.Firebase
             UserNickname = _user.DisplayName;
             UserAvatarID = 0;
             UserCarID = 0;
-            UserScore = "0.00";
+            UserScore = "0";
         }
 
         private void InitInitialDataToDatabase()
@@ -116,7 +146,7 @@ namespace Services.Firebase
             StartCoroutine(UpdateNickname(UserNickname));
             StartCoroutine(UpdateAvatarID(UserAvatarID));
             StartCoroutine(UpdateCarID(UserCarID));
-            StartCoroutine(UpdateScore(0));
+            StartCoroutine(UpdateScore("0"));
         }
         
         private IEnumerator UpdateNickname(string nickname)
@@ -178,27 +208,8 @@ namespace Services.Firebase
             PlayerPrefs.SetInt(Constants.PLAYER_PREFS_CAR_ID, carID);
         }
         
-        private IEnumerator UpdateScore(float score)
+        private IEnumerator UpdateScore(string score)
         {
-            var dbGetScoreTask = DatabaseReference.Child(Constants.DATABASE_USERS)
-                .Child(_user.UserId)
-                .Child(Constants.DATABASE_MAX_SCORE)
-                .GetValueAsync();
-            
-            yield return new WaitUntil(() => dbGetScoreTask.IsCompleted);
-
-            if (dbGetScoreTask.Exception != null)
-            {
-                Debug.LogWarning(message: $"Failed to register task with {dbGetScoreTask.Exception}");
-            }
-            else if(dbGetScoreTask.Result.Value != null)
-            {
-                if (score < float.Parse(dbGetScoreTask.Result.Value.ToString()))
-                {
-                    score = float.Parse(dbGetScoreTask.Result.Value.ToString());
-                }
-            }
-
             var dbTask = DatabaseReference.Child(Constants.DATABASE_USERS)
                 .Child(_user.UserId)
                 .Child(Constants.DATABASE_MAX_SCORE)
@@ -208,7 +219,7 @@ namespace Services.Firebase
             
             if (dbTask.Exception != null)
             {
-                Debug.LogWarning(message: $"Failed to register task with {dbGetScoreTask.Exception}");
+                Debug.LogWarning(message: $"Failed to register task with {dbTask.Exception}");
             }
         }
         

@@ -11,6 +11,7 @@ namespace Services.GameStates.States
     {
         private RaceCalculation _raceCalculationUI;
         private SpeedHandlerUI _speedHandlerUI;
+        
         private PlayerMovement _localPlayer;
         private PlayerMovement _remotePlayer;
         
@@ -56,7 +57,7 @@ namespace Services.GameStates.States
         public override void ExitState()
         {
             PlayerPosition = _raceCalculationUI.PositionText.text;
-            PlayerScore = _raceCalculationUI.CurrentTime.ToString();
+            PlayerScore = _raceCalculationUI.TimerText.text;
             
             _raceCalculationUI.gameObject.SetActive(false);
             _speedHandlerUI.gameObject.SetActive(false);

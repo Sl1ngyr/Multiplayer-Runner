@@ -38,13 +38,15 @@ namespace Player
             switch (typeObstacle)
             {
                 case TypeObstacle.PushBack:
-                    OnResetSpeedObstacleDetected?.Invoke();
                     PushBackObstacle pushBackObstacle = obstacle.GetComponent<PushBackObstacle>();
                     OnPushBackObstacleDetected?.Invoke(pushBackObstacle.PushBackPositon);
+                    
+                    OnResetSpeedObstacleDetected?.Invoke();
                     break;
                 
                 case TypeObstacle.SlowDown:
                     SlowDownObstacle slowDownObstacle = obstacle.GetComponent<SlowDownObstacle>();
+                    
                     OnSlowObstacleDetected?.Invoke(slowDownObstacle.TimeDelay,slowDownObstacle.SlowCoefficient);
                     break;
                 

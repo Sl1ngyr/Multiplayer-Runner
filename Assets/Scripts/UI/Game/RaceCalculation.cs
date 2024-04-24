@@ -10,20 +10,19 @@ using UnityEngine;
 namespace UI.Game
 {
     public class RaceCalculation : NetworkBehaviour
-    {
-        [SerializeField] private TextMeshProUGUI _timerText;
-        
+    { 
         private bool _isRaceStarted = false;
+        private float _currentTime;
         
         private Transform _localPlayer;
         private Transform _otherPlayer;
         
         [field: SerializeField] public TextMeshProUGUI PositionText { get; private set; }
-        public float CurrentTime { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI TimerText { get; private set; }
         
         public void Init()
         {
-            CurrentTime = 0;
+            _currentTime = 0;
             
             SetPlayersData();
             _localPlayer.GetComponent<PlayerMovement>().RaceStarted();
@@ -34,9 +33,9 @@ namespace UI.Game
         {
             if(!_isRaceStarted) return;
             
-            CurrentTime += Time.deltaTime;
+            _currentTime += Time.deltaTime;
             
-            CalculateTime(CurrentTime);
+            CalculateTime(_currentTime);
             
             SetPosition(CalculationPosition());
         }
@@ -88,7 +87,7 @@ namespace UI.Game
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(time);
             
-            _timerText.text = timeSpan.ToString(@"mm\:ss\:ff");
+            TimerText.text = timeSpan.ToString(@"mm\:ss\:ff");
         }
     }
 }

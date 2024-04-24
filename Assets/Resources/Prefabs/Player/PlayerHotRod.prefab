@@ -1013,11 +1013,11 @@ GameObject:
   - component: {fileID: 3184178573157739247}
   - component: {fileID: 7126567151055692584}
   - component: {fileID: 708361801613070829}
-  - component: {fileID: 3589714007733354183}
   - component: {fileID: 1677887106283956958}
   - component: {fileID: 2741129033229309627}
   - component: {fileID: 5743979001139085026}
   - component: {fileID: 1328368359134594106}
+  - component: {fileID: 4746119564013551590}
   m_Layer: 0
   m_Name: PlayerHotRod
   m_TagString: Untagged
@@ -1072,10 +1072,11 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 1376795584001453625}
   - {fileID: 7126567151055692584}
-  - {fileID: 3589714007733354183}
   - {fileID: 1677887106283956958}
   - {fileID: 2741129033229309627}
   - {fileID: 1328368359134594106}
+  - {fileID: 4746119564013551590}
+  - {fileID: 8116305343558026245}
 --- !u!114 &3184178573157739247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,28 +1150,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3589714007733354183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7507931747865713491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a591d221a634417e9827eb58e17de84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 1
-  _interpolationTarget: {fileID: 5273757205885923601}
-  UsePreciseRotation: 0
-  UseRenderSleepThresholds: 0
-  RenderThresholds:
-    UseEnergy: 0
-    Position: 0.01
-    Rotation: 0.01
-    Scale: 0.01
 --- !u!114 &1677887106283956958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1232,6 +1211,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551385452ff349788cd18e8fad3c5c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4746119564013551590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507931747865713491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &7905606787146661309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1405,7 @@ GameObject:
   - component: {fileID: 5273757205885923601}
   - component: {fileID: 8659827890413768688}
   - component: {fileID: 6983918700395109435}
+  - component: {fileID: 8116305343558026245}
   m_Layer: 0
   m_Name: SM_Veh_HotRod_01
   m_TagString: Untagged
@@ -1492,3 +1488,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8116305343558026245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9040884853401832652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0

@@ -7,7 +7,6 @@ using Services.Scene;
 using TMPro;
 using UI.AuthMenu;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Zenject;
 

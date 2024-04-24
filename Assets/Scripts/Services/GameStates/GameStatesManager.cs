@@ -27,8 +27,7 @@ namespace Services.GameStates
         public GamePreparationForStartState GamePreparationForStartState { get; private set; }
         public GameRaceState GameRaceState { get; private set; }
         public GameFinishState GameFinishState { get; private set; }
-
-        [HideInInspector] public SceneLoader SceneLoader;
+        public SceneLoader SceneLoader { get; private set; }
         
         [Inject]
         private void Construct(SceneLoader sceneLoader)

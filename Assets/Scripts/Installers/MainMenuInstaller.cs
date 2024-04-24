@@ -2,7 +2,6 @@
 using Services.Firebase;
 using UI.MainMenu;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 
 namespace Installers
@@ -10,7 +9,7 @@ namespace Installers
     public class MainMenuInstaller : MonoInstaller
     {
         [SerializeField] private UpdateDataManager _updateDataManager;
-        [FormerlySerializedAs("_playerDataConfig")] [SerializeField] private MainMenuPlayerDataConfig _mainMenuPlayerDataConfig;
+        [SerializeField] private MainMenuPlayerDataConfig _mainMenuPlayerDataConfig;
         [SerializeField] private MainMenuPlayerDisplayData mainMenuPlayerDisplayData;
         [SerializeField] private UIMainMenuManager _uiMainMenuManager;
         
