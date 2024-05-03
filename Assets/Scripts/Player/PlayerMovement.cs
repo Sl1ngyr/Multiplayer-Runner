@@ -109,7 +109,7 @@ namespace Player
 
         private void PushBack(Vector3 pushBackPosition)
         {
-            transform.position -= pushBackPosition;
+            transform.localPosition += pushBackPosition;
         }
         
         private void SlowMovement(float delay, float coefficient)
