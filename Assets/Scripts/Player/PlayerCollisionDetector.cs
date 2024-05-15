@@ -39,9 +39,10 @@ namespace Player
             {
                 case TypeObstacle.PushBack:
                     PushBackObstacle pushBackObstacle = obstacle.GetComponent<PushBackObstacle>();
-                    OnPushBackObstacleDetected?.Invoke(pushBackObstacle.PushBackPositon);
                     
                     OnResetSpeedObstacleDetected?.Invoke();
+                    
+                    OnPushBackObstacleDetected?.Invoke(pushBackObstacle.PushBackPositon);
                     break;
                 
                 case TypeObstacle.SlowDown:

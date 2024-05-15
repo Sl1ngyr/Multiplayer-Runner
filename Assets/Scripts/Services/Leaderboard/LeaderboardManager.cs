@@ -61,7 +61,7 @@ namespace Services.Leaderboard
             bool isFoundLocalPlayer = false;
             bool isInitRowLocalPlayer = false;
             
-            foreach (var childSnapshot in snapshot.Children.Reverse())
+            foreach (var childSnapshot in snapshot.Children)
             {
                 if (childSnapshot.Key == _updateDataManager.UserID)
                 {
@@ -69,6 +69,8 @@ namespace Services.Leaderboard
                     isFoundLocalPlayer = true;
                 }
 
+                if(!isFoundLocalPlayer && childSnapshot.Child(Constants.DATABASE_MAX_SCORE).Value.ToString() == "0") continue;
+                
                 if (_currentPlayerInTop > Constants.LEADERBOARD_MAX_PLAYERS_IN_TOP && isInitRowLocalPlayer)
                 {
                     return;

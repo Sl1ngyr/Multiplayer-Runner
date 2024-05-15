@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 877567764697513488}
   - component: {fileID: 2923242226385191361}
   - component: {fileID: 4731372939117564101}
+  - component: {fileID: 4666193313824673855}
   m_Layer: 0
   m_Name: SM_Prop_Manhole_01
   m_TagString: Untagged
@@ -83,6 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4666193313824673855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560382793354240242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &5976016925526072167
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +111,7 @@ GameObject:
   - component: {fileID: 3801084485785606548}
   - component: {fileID: 4766899589425474027}
   - component: {fileID: 1588959362027144755}
+  - component: {fileID: 4908574410768839103}
   m_Layer: 0
   m_Name: SM_Prop_Cone_01
   m_TagString: Untagged
@@ -166,6 +184,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4908574410768839103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976016925526072167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &7225861305130941778
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +211,7 @@ GameObject:
   - component: {fileID: 2919513539582813813}
   - component: {fileID: 5515253017120477899}
   - component: {fileID: 7657219268161986089}
+  - component: {fileID: 718982344465339425}
   m_Layer: 0
   m_Name: SM_Prop_Manhole_Hole_01
   m_TagString: Untagged
@@ -249,6 +284,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &718982344465339425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7225861305130941778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
 --- !u!1 &8088623282285105764
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +358,10 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 6848454470487497617}
   - {fileID: 3432095305915620097}
+  - {fileID: 4666193313824673855}
+  - {fileID: 718982344465339425}
+  - {fileID: 4908574410768839103}
+  - {fileID: 2334825264841665604}
 --- !u!65 &4826214865570082926
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -341,7 +396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <ObstacleType>k__BackingField: 0
-  <PushBackPositon>k__BackingField: {x: 0, y: 0, z: 7}
+  <PushBackPositon>k__BackingField: {x: 0, y: 0, z: -7}
 --- !u!114 &3432095305915620097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +424,7 @@ GameObject:
   - component: {fileID: 7860517247419768837}
   - component: {fileID: 2250489744055005026}
   - component: {fileID: 8760276925286174476}
+  - component: {fileID: 2334825264841665604}
   m_Layer: 0
   m_Name: SM_Prop_Cone_01 (1)
   m_TagString: Untagged
@@ -441,3 +497,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2334825264841665604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726212360581489489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncScale: 0
+  SyncParent: 0
+  _autoAOIOverride: 1
+  DisableSharedModeInterpolation: 0
