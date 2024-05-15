@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9818a3646e42477aadbfe9873685e799, type: 3}
+  m_Name: GarageCar 5
+  m_EditorClassIdentifier: 
+  <CarID>k__BackingField: 4
+  <GarageCar>k__BackingField: {fileID: 6099333667405545347, guid: 10bcd6945dec39846a017758bd0bd260,
+    type: 3}
